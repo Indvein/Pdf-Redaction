@@ -62,9 +62,9 @@ public class ImageStamper {
             }
             PDPage page = document.getPage(pageIndex);
             
-            // Check if stamp image exists, if not use a fallback or skip
-            if (!stampFile.exists()) {
-                System.err.println("Stamp image not found at: " + stampFile.getAbsolutePath());
+            // Check if stamp image exists and is not empty, if not use a fallback or skip
+            if (!stampFile.exists() || stampFile.length() == 0) {
+                System.err.println("Stamp image not found or is empty at: " + stampFile.getAbsolutePath());
                 Files.copy(inFile.toPath(), outFile.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
                 return;
             }
