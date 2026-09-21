@@ -28,7 +28,7 @@ import java.util.Map;
  */
 public class JavaRedactor {
 
-    private static final float RENDER_DPI = 200f;
+    private static final float RENDER_DPI = 150f;
     private static final float PTS_TO_PX = RENDER_DPI / 72f;
 
     // ─── Pass 1: Locate target words via PDFTextStripper ─────────────────────────
