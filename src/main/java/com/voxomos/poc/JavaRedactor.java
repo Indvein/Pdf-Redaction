@@ -143,7 +143,8 @@ public class JavaRedactor {
     public static void processRedactionByBoxes(File inFile, File outFile,
                                                List<Map<String, Object>> boxSpecs) {
         System.out.println("--- JavaRedactor: box-based redaction ---");
-        final float PREVIEW_DPI = 150f;
+        // Must match the DPI used in WebApp.java for /api/documents/.../pages/... preview images!
+        final float PREVIEW_DPI = 72f;
 
         Map<Integer, List<int[]>> pageBoxes = new HashMap<>();
         for (Map<String, Object> spec : boxSpecs) {

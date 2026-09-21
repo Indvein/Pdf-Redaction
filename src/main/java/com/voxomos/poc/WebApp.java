@@ -22,7 +22,11 @@ public class WebApp {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     public static void main(String[] args) {
-        Javalin app = Javalin.create(config -> {
+        // Ensure storage directories exist
+        new File(Config.OUTPUT_DIR).mkdirs();
+        new File(Config.SAMPLES_DIR).mkdirs();
+
+        var app = Javalin.create(config -> {
             config.bundledPlugins.enableCors(cors -> {
                 cors.addRule(it -> {
                     it.anyHost();
@@ -55,10 +59,11 @@ public class WebApp {
             if (file != null && file.exists()) {
                 try (PDDocument doc = org.apache.pdfbox.Loader.loadPDF(file)) {
                     PDFRenderer renderer = new PDFRenderer(doc);
-                    BufferedImage image = renderer.renderImageWithDPI(pageIndex, 150, ImageType.RGB);
+                    // Lowered DPI to 72 and switched to JPEG to drastically improve loading speeds on weak cloud servers
+                    BufferedImage image = renderer.renderImageWithDPI(pageIndex, 72, ImageType.RGB);
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    ImageIO.write(image, "png", baos);
-                    ctx.contentType("image/png");
+                    ImageIO.write(image, "jpeg", baos);
+                    ctx.contentType("image/jpeg");
                     ctx.result(baos.toByteArray());
                 }
             } else {

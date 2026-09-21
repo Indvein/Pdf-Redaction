@@ -11,10 +11,10 @@ public final class Config {
     public static final String TESSDATA_PATH = "C:\\Program Files\\Tesseract-OCR\\tessdata";
 
     /** Relative path to the samples directory (run from poc-app/). */
-    public static final String SAMPLES_DIR = "../samples";
+    public static final String SAMPLES_DIR = "samples";
 
     /** Relative path to the output directory (run from poc-app/). */
-    public static final String OUTPUT_DIR = "../output";
+    public static final String OUTPUT_DIR = "output";
 
     /** URL of the Python PyMuPDF redaction microservice. */
     public static final String REDACTION_SERVICE_URL = "http://localhost:5001/redact";
