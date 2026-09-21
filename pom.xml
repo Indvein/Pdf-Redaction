@@ -100,7 +100,7 @@
             <configuration>
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>com.voxomos.poc.Main</mainClass>
+                  <mainClass>com.voxomos.poc.WebApp</mainClass>
                 </transformer>
                 <!-- Merge service files (needed by PDFBox) -->
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
