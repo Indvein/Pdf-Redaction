@@ -18,10 +18,8 @@ COPY --from=build /app/target/poc-app-1.0-SNAPSHOT.jar app.jar
 # Create required directories for the app
 RUN mkdir -p output uploads samples
 
-# Provide a sample stamp image (fallback if one doesn't exist)
-# In production, you would mount this or copy a real one.
-RUN touch samples/stamp-image.png
-
+# Provide the real stamp image
+COPY samples/stamp-image.png samples/stamp-image.png
 # Expose the Javalin port
 EXPOSE 8274
 
