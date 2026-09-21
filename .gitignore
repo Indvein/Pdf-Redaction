@@ -1,0 +1,22 @@
+# Node
+node_modules/
+dist/
+
+# Maven/Java
+target/
+*.class
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# App specifics
+.env
+output/
+uploads/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
